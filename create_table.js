@@ -8,10 +8,12 @@ module.exports=()=>{
             if (err){
                 console.log("ERROR")
             }
-            db.run('DROP TABLE IF EXISTS employees');
-            db.run("CREATE TABLE IF NOT EXISTS employees(id INT, firstName TEXT, lastName TEXT, jobTitle TEXT, address TEXT)");
-            console.log("table made? YES!");
-            resolve();
+            db.run('DROP TABLE IF EXISTS employees', () => {
+                db.run("CREATE TABLE IF NOT EXISTS employees(id INT, firstName TEXT, lastName TEXT, jobTitle TEXT, address TEXT)", () => {
+                    console.log("table made? YES!");
+                    resolve();
+                });
+            });
         });
     })
 };
