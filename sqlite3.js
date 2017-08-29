@@ -47,7 +47,7 @@ const doQueries=()=>{
     });
 
 //Write a statement that returns all employees of a specified jobTitle.
-    db.all('SELECT firstName, lastName FROM employees WHERE jobTitle="Companion" ORDER BY lastName', (err, allInfo)=>{
+    db.all('SELECT firstName as "First", lastName as "Last" FROM employees WHERE jobTitle="Companion" ORDER BY lastName', (err, allInfo)=>{
         console.log(allInfo);
     });
 
